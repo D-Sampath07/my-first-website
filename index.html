@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sampath Kumar | Portfolio</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0; padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: #282828;
+    color: #f5f5f5;
+    overflow-x: hidden;
+  }
+
+  .container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: radial-gradient(circle farthest-side at 0% 50%, #282828 23.5%, transparent 0) 21px 30px,
+      radial-gradient(circle farthest-side at 0% 50%, #2c3539 24%, transparent 0) 19px 30px,
+      linear-gradient(#282828 14%, transparent 0, transparent 85%, #282828 0) 0 0,
+      linear-gradient(150deg, #282828 24%, #2c3539 0, #2c3539 26%, transparent 0, transparent 74%, #2c3539 0, #2c3539 76%, #282828 0) 0 0,
+      linear-gradient(30deg, #282828 24%, #2c3539 0, #2c3539 26%, transparent 0, transparent 74%, #2c3539 0, #2c3539 76%, #282828 0) 0 0,
+      linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0) 0 0 #282828;
+    background-size: 40px 60px;
+    z-index: -1;
+  }
+
+  aside {
+    position: fixed;
+    top: 0; left: -280px;
+    width: 280px; height: 100vh;
+    background: #040f16;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  aside.open {
+    left: 0;
+  }
+  aside h2 {
+    color: #f0a600;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  button {
+    position: relative;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    border-radius: 7px;
+    border: 1px solid rgb(61, 106, 255);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+  }
+  button:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    transition: all 0.2s ease-out;
+  }
+  button:hover::before {
+    animation: sh02 0.5s 0s linear;
+  }
+  button::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+  }
+  @keyframes sh02 {
+    from {
+      opacity: 0;
+      left: 0%;
+    }
+    50% {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      left: 100%;
+    }
+  }
+  button:active {
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow 0.2s ease-in;
+  }
+
+  main {
+    padding: 60px 40px 40px 40px; /* Added top padding to shift content below menu */
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+  }
+  main.shifted {
+    margin-left: 280px;
+  }
+  main h1 {
+    font-size: 2.8rem;
+    color: #f0a600;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  main p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  /* Menu button fixed top-left corner */
+  #menuToggle {
+    position: fixed;
+    top: 15px; left: 15px;
+    z-index: 1100;
+    width: 140px;
+    height: 45px;
+    border-radius: 7px;
+    border: 1px solid rgb(61, 106, 255);
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    transition: all 0.2s ease-in;
+  }
+  #menuToggle:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    transition: all 0.2s ease-out;
+  }
+  #menuToggle:hover::before {
+    animation: sh02 0.5s 0s linear;
+  }
+  #menuToggle::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+  }
+
+  /* Hide all content sections except active */
+  .content-section {
+    display: none;
+  }
+  .content-section.active {
+    display: block;
+  }
+
+  /* Contact links on homepage */
+  .contact-links a {
+    color: #f0a600;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  .contact-links a:hover {
+    text-decoration: underline;
+  }
+  .View-MAL {
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 8px 16px;
+  text-align: center;
+  text-transform: none;
+  display: inline-block;
+  width: auto; /* Ensures it doesn't stretch */
+  max-width: 100%;
+}
+
+
+.View-MAL:hover {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+</style>
+</head>
+<body>
+
+<div class="container"></div>
+
+<aside id="sidebar" aria-label="Sidebar navigation">
+   <h2>‎ ‎ ‎ ‎ ‎ </h2>
+  <button data-target="intro">Home</button>
+  <button data-target="skills">Skills</button>
+  <button data-target="projects">Projects</button>
+  <button data-target="hobbies">Hobbies</button>
+  <button data-target="anime">Anime</button>
+  <button data-target="contacts">Contacts</button>
+</aside>
+
+<main id="mainContent">
+  <h1>Sampath Kumar</h1>
+  
+  <section id="intro" class="content-section active">
+    <p>Hi! I am an Engineering student.</p>
+    <p>10.0 CGPA in 10th, 9.26 CGPA in Intermediate, currently pursuing BTech CSE [AIML] from NGIT, Semester 2.</p>
+    <p>Click the menu button to explore.</p>
+    <div class="contact-links" style="margin-top: 25px;">
+      <a href="mailto:dsampath13579@gmail.com" target="_blank" rel="noopener noreferrer">Gmail</a>
+      <a href="https://www.instagram.com/sampath_d_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://github.com/D-Sampath07" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </section>
+
+  <section id="skills" class="content-section">
+    <h2>Skills</h2>
+    <ul>
+      <li>C</li>
+      <li>Python</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="content-section">
+    <h2>Projects</h2>
+    <p>Not yet created any cuz I don't have enough skills and I'm lazy.</p>
+  </section>
+
+  <section id="hobbies" class="content-section">
+    <h2>Hobbies</h2>
+    <ul>
+      <li>Watching Anime</li>
+      <li>Playing Games</li>
+      <li>Coding</li>
+    </ul>
+  </section>
+
+  <section id="anime" class="content-section">
+  <h2>Anime</h2>
+  <p>
+    I'm a huge fan of <strong>One Piece</strong> and watch anime regularly.
+    <br>
+    <a href="https://myanimelist.net/profile/Aizen_D_Namikaze" target="_blank" rel="noopener noreferrer">
+      <button class="View-MAL" role="button">View MAL</button>
+    </a>
+  </p>
+</section>
+
+
+  <section id="contacts" class="content-section">
+    <h2>Contacts</h2>
+    <p>Feel free to reach out to me via:</p>
+    <ul>
+      <li>Email: <a href="mailto:dsampath13579@gmail.com">dsampath13579@gmail.com</a></li>
+      <li>Instagram: <a href="https://www.instagram.com/sampath_d_/" target="_blank" rel="noopener noreferrer">@sampath_d_</a></li>
+      <li>GitHub: <a href="https://github.com/D-Sampath07" target="_blank" rel="noopener noreferrer">D-Sampath07</a></li>
+    </ul>
+  </section>
+</main>
+
+<button id="menuToggle" aria-label="Toggle menu">Menu</button>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const mainContent = document.getElementById('mainContent');
+  const buttons = sidebar.querySelectorAll('button[data-target]');
+
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    mainContent.classList.toggle('shifted');
+  });
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target');
+      if (!target) return;
+
+      // Hide all content sections
+      document.querySelectorAll('.content-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+
+      // Show selected section
+      const selectedSection = document.getElementById(target);
+      if (selectedSection) {
+        selectedSection.classList.add('active');
+      }
+
+      // Close sidebar after selection
+      sidebar.classList.remove('open');
+      mainContent.classList.remove('shifted');
+    });
+  });
+</script>
+
+</body>
+</html>
