@@ -593,6 +593,19 @@ body.light-mode .glass-box {
   darkModeToggle.addEventListener('change', () => {
     localStorage.setItem('lightModeEnabled', darkModeToggle.checked);
   });
+
+  // Get all nav links inside the ul
+const navLinks = document.querySelectorAll('nav ul li a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    // Only collapse if menu is currently expanded (mobile)
+    if (navbar.classList.contains('expanded')) {
+      navbar.classList.remove('expanded');
+    }
+  });
+});
+
 </script>
 
 </body>
