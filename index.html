@@ -414,15 +414,17 @@ body.light-mode .container {
 }
 
 .glass-box {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(240, 166, 0, 0.5);
+  will-change: backdrop-filter, background-color;
+  /* Force GPU compositing layer */
   backface-visibility: hidden;
   transform: translateZ(0);
+  /* Make sure border and background are consistent */
+  border: 2px solid rgba(240, 166, 0, 0.8);
+  background: rgba(255, 255, 255, 0.08);
   border: 2px solid #f0a600;
   border-radius: 16px;
   padding: 24px;
   margin: 40px 0;
-  will-change: backdrop-filter, background-color;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow:
@@ -550,6 +552,18 @@ body.light-mode .glass-box {
   darkModeToggle.addEventListener('change', () => {
     document.body.classList.toggle('light-mode', darkModeToggle.checked);
   });
+
+  darkModeToggle.addEventListener('change', () => {
+  document.body.classList.toggle('light-mode', darkModeToggle.checked);
+  
+  // Force repaint for all glass-box elements
+  document.querySelectorAll('.glass-box').forEach(el => {
+    el.style.display = 'none';
+    void el.offsetHeight; // trigger reflow
+    el.style.display = '';
+  });
+});
+
 
   // Optional: Save preference in localStorage
   window.addEventListener('DOMContentLoaded', () => {
