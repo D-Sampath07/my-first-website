@@ -453,6 +453,38 @@ body.light-mode .glass-box {
   margin-left: auto;
 }
 
+  .contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  min-width: 150px;
+  justify-content: center;
+}
+
+.contact-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+/* Individual button colors */
+.instagram {
+  background-color: #e1306c;
+}
+
+.github {
+  background-color: #333;
+}
+
+.email {
+  background-color: #4285F4;
+}
+  
 </style>
 </head>
 <body>
@@ -523,15 +555,23 @@ body.light-mode .glass-box {
     </a></p>
   </section>
 
-  <section id="contacts" class="glass-box">
-    <h2>Contacts</h2>
-    <p>Feel free to reach out to me via:</p>
-    <ul>
-      <li>Email: <a href="mailto:dsampath13579@gmail.com">dsampath13579@gmail.com</a></li>
-      <li>Instagram: <a href="https://www.instagram.com/sampath_d_/" target="_blank" rel="noopener noreferrer">@sampath_d_</a></li>
-      <li>GitHub: <a href="https://github.com/D-Sampath07" target="_blank" rel="noopener noreferrer">D-Sampath07</a></li>
-    </ul>
-  </section>
+  <section id="contacts">
+  <h2>Contact Me</h2>
+  <div class="glass-box">
+    <a href="https://instagram.com/sampath_d_" target="_blank" class="contact-btn instagram">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="20" />
+      @sampath_d_
+    </a>
+    <a href="https://github.com/D-Sampath07" target="_blank" class="contact-btn github">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="20" />
+      D-Sampath07
+    </a>
+    <a href="mailto:dsampath13579@gmail.com" class="contact-btn email">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="20" />
+      dsampath13579@gmail.com
+    </a>
+  </div>
+</section>
 </main>
 
 <script>
