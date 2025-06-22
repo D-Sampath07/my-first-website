@@ -426,6 +426,7 @@ body.light-mode .container {
   padding: 24px;
   margin: 40px 0;
   backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   -webkit-backdrop-filter: blur(10px);
   box-shadow:
     0 0 10px rgba(240, 166, 0, 0.6),
@@ -550,8 +551,19 @@ body.light-mode .glass-box {
 
   // On toggle, toggle class on body
   darkModeToggle.addEventListener('change', () => {
-    document.body.classList.toggle('light-mode', darkModeToggle.checked);
+  document.body.classList.toggle('light-mode', darkModeToggle.checked);
+
+  document.querySelectorAll('.glass-box').forEach(el => {
+    el.style.transition = 'none';      // temporarily disable transitions
+    el.style.opacity = '0.99';          // tiny opacity change forces repaint
+    el.style.filter = 'blur(0)';        // force filter repaint
+    void el.offsetHeight;               // trigger reflow
+    el.style.opacity = '';              // reset opacity
+    el.style.filter = '';               // reset filter
+    el.style.transition = '';           // re-enable transitions
   });
+});
+
 
   darkModeToggle.addEventListener('change', () => {
   document.body.classList.toggle('light-mode', darkModeToggle.checked);
