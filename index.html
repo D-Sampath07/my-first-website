@@ -417,24 +417,28 @@ body.light-mode .container {
   will-change: backdrop-filter, background-color;
   /* Force GPU compositing layer */
   backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  
   /* Make sure border and background are consistent */
   border: 2px solid rgba(240, 166, 0, 0.8);
   background: rgba(255, 255, 255, 0.08);
-  border: 2px solid #f0a600;
   border-radius: 16px;
   padding: 24px;
   margin: 40px 0;
+
   backdrop-filter: blur(10px);
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   -webkit-backdrop-filter: blur(10px);
+
   box-shadow:
     0 0 10px rgba(240, 166, 0, 0.6),
     0 0 20px rgba(240, 166, 0, 0.4),
     0 0 40px rgba(240, 166, 0, 0.2);
+
   color: #fff;
-  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
+
 
 body.light-mode .glass-box {
   background: rgba(255, 255, 255, 0.6);
@@ -565,16 +569,18 @@ body.light-mode .glass-box {
 });
 
 
-  darkModeToggle.addEventListener('change', () => {
+ darkModeToggle.addEventListener('change', () => {
   document.body.classList.toggle('light-mode', darkModeToggle.checked);
-  
-  // Force repaint for all glass-box elements
-  document.querySelectorAll('.glass-box').forEach(el => {
-    el.style.display = 'none';
-    void el.offsetHeight; // trigger reflow
-    el.style.display = '';
-  });
+  setTimeout(() => {
+    document.querySelectorAll('.glass-box').forEach(el => {
+      el.style.transform = 'translateZ(0)';
+      // slight nudge to force repaint
+      void el.offsetHeight;
+      el.style.transform = '';
+    });
+  }, 50);
 });
+
 
 
   // Optional: Save preference in localStorage
