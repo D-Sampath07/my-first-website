@@ -487,55 +487,53 @@ body.light-mode .glass-box {
 
   /* From Uiverse.io by Navarog21 */ 
 /* From Uiverse.io by Navarog21 - Modified by Sam & ChatGPT */
+/* From Uiverse.io by Navarog21 — Restored to Original */
 button {
   width: 10em;
   position: relative;
   height: 3.5em;
-  border: 3px ridge #149CEA;
+  border: 3px solid transparent;
   outline: none;
   background-color: transparent;
   color: white;
-  transition: 1s;
+  transition: 0.4s ease;
   border-radius: 0.3em;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   z-index: 1;
-  overflow: hidden;
 }
 
-/* Hide before/after bars by default */
+/* Side bars */
 button::after,
 button::before {
   content: "";
   position: absolute;
-  left: 3%;
-  width: 95%;
-  height: 40%;
-  background-color: transparent;
+  background-color: #149CEA;
+  height: 100%;
+  width: 3px;
+  top: 0;
   transition: 0.5s;
-  transform-origin: center;
-  z-index: -1;
-}
-
-/* Positions */
-button::after {
-  top: -10px;
 }
 
 button::before {
-  top: 80%;
+  left: 0;
 }
 
-/* On hover: show them and animate scale to 0 */
+button::after {
+  right: 0;
+}
+
+/* Hover: expand top and bottom */
+button:hover {
+  border-left: 3px solid #149CEA;
+  border-right: 3px solid #149CEA;
+  box-shadow: inset 0px 0px 25px #1479EA;
+}
+
 button:hover::before,
 button:hover::after {
-  background-color: #212121;
-  transform: scale(0);
-}
-
-button:hover {
-  box-shadow: inset 0px 0px 25px #1479EA;
+  height: 0;
 }
 
 </style>
