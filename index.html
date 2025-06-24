@@ -490,52 +490,97 @@ body.light-mode .glass-box {
 /* From Uiverse.io by Navarog21 - Modified by Sam & ChatGPT */
 /* From Uiverse.io by Navarog21 — Restored to Original */
 /* From Uiverse.io by Navarog21 */ 
+<style>
+/* From Uiverse.io by cssbuttons-io */
 button {
-  width: 10em;
   position: relative;
-  height: 3.5em;
-  border: 3px ridge #149CEA;
-  outline: none;
-  background-color: transparent;
-  color: white;
-  transition: 1s;
-  border-radius: 0.3em;
-  font-size: 16px;
-  font-weight: bold;
+  display: inline-block;
   cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
 }
 
-button::after {
-  content: "";
+button.learn-more {
+  width: 12rem;
+  height: auto;
+}
+
+button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #282936;
+  border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
   position: absolute;
-  top: -10px;
-  left: 3%;
-  width: 95%;
-  height: 40%;
-  background-color: #212121;
-  transition: 0.5s;
-  transform-origin: center;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
 }
 
-button::before {
-  content: "";
-  transform-origin: center;
+button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
   position: absolute;
-  top: 80%;
-  left: 3%;
-  width: 95%;
-  height: 40%;
-  background-color: #212121;
-  transition: 0.5s;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
 }
 
-button:hover::before, button:hover::after {
-  transform: scale(0)
+button.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #282936;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-button:hover {
-  box-shadow: inset 0px 0px 25px #1479EA;
+button:hover .circle {
+  width: 100%;
 }
+
+button:hover .circle .icon.arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+  color: #fff;
+}
+</style>
+
 </style>
 </head>
 <body>
@@ -586,32 +631,18 @@ button:hover {
   <h2>Projects</h2>
   <p>Just one for now... but it slaps!</p>
 
-  <!-- Rainbow Button Starts -->
+  <!-- Button for File Converter -->
   <a href="https://file-converter-by-blaze.netlify.app/" target="_blank">
-    <button
-      class="items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-transform duration-200 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group relative animate-rainbow cursor-pointer border-0 bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsl(0,100%,63%),hsl(90,100%,63%),hsl(210,100%,63%),hsl(195,100%,63%),hsl(270,100%,63%))] bg-[length:200%] text-foreground [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.08*1rem)_solid_transparent] before:absolute before:bottom-[-20%] before:left-1/2 before:z-[0] before:h-[20%] before:w-[60%] before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,hsl(0,100%,63%),hsl(90,100%,63%),hsl(210,100%,63%),hsl(195,100%,63%),hsl(270,100%,63%))] before:[filter:blur(calc(0.8*1rem))] dark:bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,hsl(0,100%,63%),hsl(90,100%,63%),hsl(210,100%,63%),hsl(195,100%,63%),hsl(270,100%,63%))] hover:scale-105 active:scale-95 h-10 px-4 py-2 inline-flex"
-    >
-      <div class="flex items-center">
-        <svg class="size-4" viewBox="0 0 438.549 438.549">
-          <path fill="#fff" d="M409.132 114.573c...your-path-truncated-here..."></path>
-        </svg>
-        <span class="ml-1 text-white lg:inline p-1">File Converter</span>
-      </div>
-      <div class="ml-2 flex items-center gap-1 text-sm md:flex">
-        <svg class="size-4 text-gray-500 transition-all duration-200 group-hover:text-yellow-300" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M10.788 3.21c..."></path>
-        </svg>
-        <span class="inline-block tabular-nums tracking-wider font-display font-medium text-black dark:text-white">11</span>
-      </div>
+    <button class="learn-more">
+      <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+      </span>
+      <span class="button-text">File Converter</span>
     </button>
   </a>
-  <!-- Rainbow Button Ends -->
 
   <p>More projects coming once I stop being lazy and level up my skills. 💻🛠️</p>
 </section>
-
-
-
 
   <section id="hobbies" class="glass-box">
     <h2>Hobbies</h2>
