@@ -9,18 +9,21 @@
   html {
     scroll-behavior: smooth;
   }
-  body {
-    margin: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background: #282828;
-    color: #f5f5f5;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  /* LIGHT MODE */
-  body.light-mode {
-    background: #f5f5f5;
-    color: #222;
-  }
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: url('sunny-dark.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #f5f5f5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background: url('sunny-light.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #222;
+}
+
   body.light-mode nav {
     background: #f0a600;
     box-shadow: 0 0 15px rgba(40, 40, 40, 0.7);
@@ -309,111 +312,7 @@
     outline: 0;
   }
   
-  .container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-        circle farthest-side at 0% 50%,
-        #282828 23.5%,
-        rgba(255, 170, 0, 0) 0
-      )
-      21px 30px,
-    radial-gradient(
-        circle farthest-side at 0% 50%,
-        #2c3539 24%,
-        rgba(240, 166, 17, 0) 0
-      )
-      19px 30px,
-    linear-gradient(
-        #282828 14%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 85%,
-        #282828 0
-      )
-      0 0,
-    linear-gradient(
-        150deg,
-        #282828 24%,
-        #2c3539 0,
-        #2c3539 26%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 74%,
-        #2c3539 0,
-        #2c3539 76%,
-        #282828 0
-      )
-      0 0,
-    linear-gradient(
-        30deg,
-        #282828 24%,
-        #2c3539 0,
-        #2c3539 26%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 74%,
-        #2c3539 0,
-        #2c3539 76%,
-        #282828 0
-      )
-      0 0,
-    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
-      #282828;
-  background-size: 40px 60px;
-  z-index: -1;
-  pointer-events: none;
-}
-
-body.light-mode .container {
-  background: radial-gradient(
-        circle farthest-side at 0% 50%,
-        #f0f0f0 23.5%,
-        rgba(255, 170, 0, 0) 0
-      )
-      21px 30px,
-    radial-gradient(
-        circle farthest-side at 0% 50%,
-        #d0d0d0 24%,
-        rgba(240, 166, 17, 0) 0
-      )
-      19px 30px,
-    linear-gradient(
-        #ffffff 14%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 85%,
-        #ffffff 0
-      )
-      0 0,
-    linear-gradient(
-        150deg,
-        #ffffff 24%,
-        #dcdcdc 0,
-        #dcdcdc 26%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 74%,
-        #dcdcdc 0,
-        #dcdcdc 76%,
-        #ffffff 0
-      )
-      0 0,
-    linear-gradient(
-        30deg,
-        #ffffff 24%,
-        #dcdcdc 0,
-        #dcdcdc 26%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 74%,
-        #dcdcdc 0,
-        #dcdcdc 76%,
-        #ffffff 0
-      )
-      0 0,
-    linear-gradient(90deg, #dcdcdc 2%, #ffffff 0, #ffffff 98%, #dcdcdc 0%) 0 0
-      #ffffff;
-  background-size: 40px 60px;
-}
-
+ 
 .glass-box {
   will-change: backdrop-filter, background-color;
   /* Force GPU compositing layer */
@@ -636,8 +535,6 @@ body.light-mode .hover-card {
 </head>
 <body>
 
-<div class="container"></div>
-
 <nav id="navbar" aria-label="Primary navigation">
   <!-- Menu toggle inside nav -->
   <div id="menuToggle" aria-label="Toggle menu" tabindex="0" role="button">
@@ -804,17 +701,22 @@ body.light-mode .hover-card {
 });
 
 
- darkModeToggle.addEventListener('change', () => {
+darkModeToggle.addEventListener('change', () => {
   document.body.classList.toggle('light-mode', darkModeToggle.checked);
-  setTimeout(() => {
+
+  requestAnimationFrame(() => {
     document.querySelectorAll('.glass-box').forEach(el => {
-      el.style.transform = 'translateZ(0)';
-      // slight nudge to force repaint
-      void el.offsetHeight;
-      el.style.transform = '';
+      el.style.willChange = 'auto';
+      el.style.opacity = '0.99';
+      el.style.filter = 'blur(9.9px)';
+      void el.offsetHeight; // force reflow
+      el.style.opacity = '';
+      el.style.filter = '';
+      el.style.willChange = '';
     });
-  }, 50);
+  });
 });
+
 
 
 
