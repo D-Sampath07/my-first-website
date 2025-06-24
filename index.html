@@ -325,25 +325,22 @@ h2 {
  
 .glass-box {
   will-change: backdrop-filter, background-color;
-  /* Force GPU compositing layer */
   backface-visibility: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  
-  /* Make sure border and background are consistent */
-  border: 2px solid rgba(240, 166, 0, 0.8);
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+
+  border: 1.5px solid rgba(240, 166, 0, 0.5);
+  background: rgba(255, 255, 255, 0.04); /* more transparent than before */
+  border-radius: 20px;
   padding: 24px;
   margin: 40px 0;
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   box-shadow:
-    0 0 10px rgba(240, 166, 0, 0.6),
-    0 0 20px rgba(240, 166, 0, 0.4),
-    0 0 40px rgba(240, 166, 0, 0.2);
+    0 0 8px rgba(240, 166, 0, 0.3),
+    0 0 16px rgba(240, 166, 0, 0.15);
 
   color: #fff;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
@@ -351,13 +348,14 @@ h2 {
 
 
 body.light-mode .glass-box {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2); /* less opaque, lighter glass */
   color: #000;
-  border-color: #f0a600;
+  border-color: rgba(240, 166, 0, 0.4);
   box-shadow:
-    0 0 6px rgba(240, 166, 0, 0.4),
-    0 0 12px rgba(240, 166, 0, 0.2);
+    0 0 6px rgba(240, 166, 0, 0.2),
+    0 0 10px rgba(240, 166, 0, 0.1);
 }
+
 
 #darkModeToggle {
   margin-left: auto;
@@ -567,8 +565,8 @@ body.light-mode .hover-card {
 <main>
   <section id="intro" class="glass-box">
     <h1>D Sampath Kumar</h1>
-    <p>Hi! I am an Engineering student currently pursuing BTech CSE [AIML] from NGIT, Semester-II</p>
-    <p>10.0 CGPA in 10th, 96.2% in Intermediate and 9.26 SGPA in Sem-I .</p>
+    <p>Hi! I am an Engineering student.</p>
+    <p>10.0 CGPA in 10th, 96.2% in Intermediate, currently pursuing BTech CSE [AIML] from NGIT, Semester 2.</p>
     <p>Explore the sections using the menu above.</p>
     <div class="contact-links" style="margin-top: 25px;">
       <a href="mailto:dsampath13579@gmail.com" target="_blank" rel="noopener noreferrer">Gmail</a>
@@ -633,6 +631,7 @@ body.light-mode .hover-card {
   
  <section id="contacts" class="glass-box">
   <!-- Contact Section -->
+<h1>Contact me</h1>
 <svg width="0" height="0" style="position: absolute;">
   <defs>
     <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
