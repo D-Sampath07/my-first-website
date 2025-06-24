@@ -486,100 +486,83 @@ body.light-mode .glass-box {
   background-color: #4285F4;
 }
 
-  /* From Uiverse.io by Navarog21 */ 
-/* From Uiverse.io by Navarog21 - Modified by Sam & ChatGPT */
-/* From Uiverse.io by Navarog21 — Restored to Original */
-/* From Uiverse.io by Navarog21 */ 
-<style>
-/* From Uiverse.io by cssbuttons-io */
-button {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: 0;
-  vertical-align: middle;
-  text-decoration: none;
-  background: transparent;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-}
-
-button.learn-more {
-  width: 12rem;
+button.file-converter {
+  width: 13rem;
   height: auto;
-}
-
-button.learn-more .circle {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
   position: relative;
-  display: block;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  background: #282936;
-  border-radius: 1.625rem;
+  overflow: hidden;
 }
 
-button.learn-more .circle .icon {
+button.file-converter .circle {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
   position: absolute;
   top: 0;
-  bottom: 0;
-  margin: auto;
-  background: #fff;
+  left: 0;
+  width: 3rem;
+  height: 100%;
+  background: #282936;
+  border-radius: 1.625rem;
+  z-index: 1;
 }
 
-button.learn-more .circle .icon.arrow {
+button.file-converter .circle .icon.arrow {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  left: 0.625rem;
-  width: 1.125rem;
+  position: absolute;
+  top: 50%;
+  left: 0.7rem;
+  width: 1rem;
   height: 0.125rem;
-  background: none;
+  background: #fff;
+  transform: translateY(-50%);
 }
 
-button.learn-more .circle .icon.arrow::before {
-  position: absolute;
+button.file-converter .circle .icon.arrow::before {
   content: "";
-  top: -0.29rem;
-  right: 0.0625rem;
-  width: 0.625rem;
-  height: 0.625rem;
+  position: absolute;
+  top: -0.3rem;
+  right: 0.05rem;
+  width: 0.6rem;
+  height: 0.6rem;
   border-top: 0.125rem solid #fff;
   border-right: 0.125rem solid #fff;
   transform: rotate(45deg);
 }
 
-button.learn-more .button-text {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+button.file-converter .button-text {
+  position: relative;
+  display: inline-block;
   padding: 0.75rem 0;
-  margin: 0 0 0 1.85rem;
-  color: #282936;
+  margin-left: 3.5rem;
   font-weight: 700;
-  line-height: 1.6;
-  text-align: center;
   text-transform: uppercase;
+  font-size: 14px;
+  color: white;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+/* Light mode override */
+body.light-mode button.file-converter .button-text {
+  color: violet;
 }
 
 button:hover .circle {
   width: 100%;
+  border-radius: 2rem;
 }
 
 button:hover .circle .icon.arrow {
-  background: #fff;
-  transform: translate(1rem, 0);
+  transform: translate(1rem, -50%);
 }
 
 button:hover .button-text {
-  color: #fff;
+  color: white;
 }
-</style>
+
+body.light-mode button:hover .button-text {
+  color: violet;
+}
+
 
 </style>
 </head>
@@ -631,9 +614,9 @@ button:hover .button-text {
   <h2>Projects</h2>
   <p>Just one for now... but it slaps!</p>
 
-  <!-- Button for File Converter -->
-  <a href="https://file-converter-by-blaze.netlify.app/" target="_blank">
-    <button class="learn-more">
+  <!-- File Converter Button -->
+  <a href="https://file-converter-by-blaze.netlify.app/" target="_blank" style="text-decoration: none;">
+    <button class="file-converter">
       <span class="circle" aria-hidden="true">
         <span class="icon arrow"></span>
       </span>
@@ -641,7 +624,7 @@ button:hover .button-text {
     </button>
   </a>
 
-  <p>More projects coming once I stop being lazy and level up my skills. 💻🛠️</p>
+  <p>More projects soon 💻🛠️</p>
 </section>
 
   <section id="hobbies" class="glass-box">
