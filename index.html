@@ -612,6 +612,24 @@ body.light-mode button:hover .button-text {
 .discord {
   background-color: #5865F2;
 }
+.project-card {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+body.light-mode .project-card {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.project-desc {
+  margin-top: 12px;
+  line-height: 1.6;
+  font-size: 14px;
+  color: inherit;
+}
 
 
 </style>
@@ -662,27 +680,30 @@ body.light-mode button:hover .button-text {
 
 <section id="projects" class="glass-box">
   <h2>Projects</h2>
-  <p>Just one for now </p>
+  <p>Just one for now</p>
 
-  <div style="margin-top: 15px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;">
-  <!-- File Converter Button -->
-  <a href="https://file-converter-by-blaze.netlify.app/" target="_blank" style="text-decoration: none;">
-    <button class="file-converter">
-      <span class="circle" aria-hidden="true">
-        <span class="icon arrow"></span>
-      </span>
-      <span class="button-text">File Converter</span>
-    </button>
-  </a>
-  <p style="margin: 0;">
-    This File Converter lets you switch between DOCX, PDF, PPTX, JPG/PNG, and TXT formats. Built using <strong>Flask</strong> on the backend and <strong>HTML/JS</strong> on the frontend. Fully responsive and supports theme toggling!
-  </p>
-</div>
+  <!-- Project Block -->
+  <div class="project-card">
+    <a href="https://file-converter-by-blaze.netlify.app/" target="_blank" style="text-decoration: none;">
+      <button class="file-converter">
+        <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">File Converter</span>
+      </button>
+    </a>
+    <p class="project-desc">
+      This File Converter lets you switch between DOCX, PDF, PPTX, JPG/PNG, and TXT formats. Built using
+      <strong>Flask</strong> on the backend and <strong>HTML/JS</strong> on the frontend. Fully responsive and supports theme toggling!
+    </p>
+  </div>
 
-   <div style="margin-top: 15px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;">
-     <p>More projects soon 💻🛠️</p>
-   </div>
+  <!-- More Projects Block -->
+  <div class="project-card">
+    <p>More projects soon 💻🛠️</p>
+  </div>
 </section>
+
 
   <section id="hobbies" class="glass-box">
     <h2>Hobbies</h2>
