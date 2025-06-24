@@ -484,7 +484,56 @@ body.light-mode .glass-box {
 .email {
   background-color: #4285F4;
 }
-  
+
+  /* From Uiverse.io by Navarog21 */ 
+button {
+  width: 10em;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge #149CEA;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: #212121;
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+button::before {
+  content: "";
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: #212121;
+  transition: 0.5s;
+}
+
+button:hover::before,
+button:hover::after {
+  transform: scale(0);
+}
+
+button:hover {
+  box-shadow: inset 0px 0px 25px #1479EA;
+}
+
 </style>
 </head>
 <body>
@@ -533,15 +582,18 @@ body.light-mode .glass-box {
 
 <section id="projects" class="glass-box">
   <h2>Projects</h2>
-  <ul>
-    <li>
-      <strong><a href="https://file-converter-by-blaze.netlify.app/" target="_blank">File Converter Web App</a></strong> – A sleek web tool that converts files between PDF, DOCX, PPTX, TXT, JPG, and PNG. Built with HTML, CSS, JavaScript (frontend), and Flask (backend in progress).
-    </li>
-    <li>
-      <em>Other projects?</em> Not yet. Skills still loading… and also... the legendary laziness prevails.
-    </li>
-  </ul>
+  <p>Just one for now... but it slaps!</p>
+
+  <div style="margin: 1em 0;">
+    <!-- Custom Button for File Converter Project -->
+    <a href="https://file-converter-by-blaze.netlify.app/" target="_blank">
+      <button>File Converter</button>
+    </a>
+  </div>
+
+  <p>More projects coming once I stop being lazy and level up my skills. 💻🛠️</p>
 </section>
+
 
 
   <section id="hobbies" class="glass-box">
