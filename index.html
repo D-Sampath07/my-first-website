@@ -486,6 +486,7 @@ body.light-mode .glass-box {
 }
 
   /* From Uiverse.io by Navarog21 */ 
+/* From Uiverse.io by Navarog21 - Modified by Sam & ChatGPT */
 button {
   width: 10em;
   position: relative;
@@ -499,34 +500,37 @@ button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
 }
 
-button::after {
+/* Hide before/after bars by default */
+button::after,
+button::before {
   content: "";
   position: absolute;
-  top: -10px;
   left: 3%;
   width: 95%;
   height: 40%;
-  background-color: #212121;
+  background-color: transparent;
   transition: 0.5s;
   transform-origin: center;
+  z-index: -1;
+}
+
+/* Positions */
+button::after {
+  top: -10px;
 }
 
 button::before {
-  content: "";
-  transform-origin: center;
-  position: absolute;
   top: 80%;
-  left: 3%;
-  width: 95%;
-  height: 40%;
-  background-color: #212121;
-  transition: 0.5s;
 }
 
+/* On hover: show them and animate scale to 0 */
 button:hover::before,
 button:hover::after {
+  background-color: #212121;
   transform: scale(0);
 }
 
