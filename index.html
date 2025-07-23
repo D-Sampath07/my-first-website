@@ -76,7 +76,7 @@ body.light-mode {
 
   nav a {
     display: inline-block;
-    color: #f0a600;
+   color: #f0a400;
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -538,6 +538,71 @@ body.light-mode .hover-card {
   color: inherit;
 }
 
+button-link {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #3d405b;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  min-width: 130px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button-link span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button-link span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+button-link:hover span {
+  padding-right: 15px;
+}
+
+button-link:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-github:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
+  color: #fce803;
+}
+
+
 
 </style>
 </head>
@@ -585,35 +650,33 @@ body.light-mode .hover-card {
 
 <section id="projects" class="glass-box">
   <h2><strong>Projects</strong></h2>
-  <p>Just few for now</p>
+  <div class="hover-card"><p><strong>Just few for now</strong></p></div>
 
-  <!-- Project Block -->
 <!-- Project Block -->
 <div class="hover-card">
-  <a href="https://filetools-devblaze.onrender.com/" target="_blank" style="text-decoration: none;">
-    <button class="file-converter">
-      <span class="circle" aria-hidden="true">
-        <span class="icon arrow"></span>
-      </span>
-      <span class="button-text">File Converter</span>
-    </button>
-  </a>
+    <a style="color: violet; font-weight: bold;">File Converter</a>
 
   <p class="hover-desc">
     A full-stack File Converter built using <strong>Flask</strong> (backend) and <strong>HTML/JS</strong> (frontend).
     Supports converting between PDF, DOCX, PPTX, TXT, and Images. Hosted live on Render.
   </p>
 
+    <a href="https://filetools-devblaze.onrender.com/" target="_blank">
+      <button-link>
+        <span>Link to Deployed Website</span>
+      </button-link>
+    </a>
+
     <!-- GitHub Code Button -->
-  <div style="margin-top: 12px;">
+  <div style="margin-top: 10px;">
     <a href="https://github.com/D-Sampath07/File-converter" target="_blank">
-      <button class="contact-btn github">
+      <button class="btn-github">
         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111432.png" width="20" height="20" />
         View Source on GitHub
       </button>
     </a>
   </div>
-  
+
 </div>
 
 <!-- Face Recognition Project Card -->
@@ -631,9 +694,9 @@ body.light-mode .hover-card {
   </p>
 
     <!-- GitHub Code Button -->
-  <div style="margin-top: 12px;">
+  <div style="margin-top: 10px;">
     <a href="https://github.com/D-Sampath07/Face-recognition-project" target="_blank">
-      <button class="contact-btn github">
+      <button class="btn-github">
         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111432.png" width="20" height="20" />
         View Source on GitHub
       </button>
@@ -641,6 +704,7 @@ body.light-mode .hover-card {
   </div>
 
 </div>
+
 
   <!-- More Projects Block -->
   <div class="hover-card">
